@@ -22,3 +22,9 @@ Once installed with Alfred you can run the following commands
     spot prev   ::  Go to the previous track (Can also use spot previous)
     spot mute   ::  Toggles mute from on/off
     spot 50     ::  Sets the volume to the number specified after 'spot'
+    
+
+## Version History ##
+### 1.0.0 - August 9, 2011###
+ 
+- Commit: Initial Release
