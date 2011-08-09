@@ -13,13 +13,12 @@ How to use
 
 Once installed with Alfred you can run the following commands
 
-[[[
-spot start  ::  To open or activate the Spotify application (can also use spot init)
-spot quit   ::  To quit the application
-spot pause  ::  Pause the current track
-spot play   ::  Play the current track
-spot next   ::  Go to the next track
-spot prev   ::  Go to the previous track (Can also use spot previous)
-spot mute   ::  Toggles mute from on/off
-spot 50     ::  Sets the volume to the number specified after 'spot'
-]]]
+
+    spot start  ::  To open or activate the Spotify application (can also use spot init)
+    spot quit   ::  To quit the application
+    spot pause  ::  Pause the current track
+    spot play   ::  Play the current track
+    spot next   ::  Go to the next track
+    spot prev   ::  Go to the previous track (Can also use spot previous)
+    spot mute   ::  Toggles mute from on/off
+    spot 50     ::  Sets the volume to the number specified after 'spot'
