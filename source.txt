@@ -1,0 +1,30 @@
+on alfred_script(ctrl)
+	
+	tell application "Spotify"
+		if "pause" is in ctrl or "play" is in ctrl then
+			playpause
+		else if "next" is in ctrl then
+			next track
+		else if "prev" is in ctrl then
+			previous track
+		else if "mute" is in ctrl then
+			if sound volume is less than or equal to 0 then
+				set sound volume to 100
+			else
+				set sound volume to 0
+			end if
+		else if "quit" is in ctrl then
+			quit
+		else if "start" is in ctrl or "init" is in ctrl then
+			activate
+		else
+			try
+				(ctrl as number) div 1
+				set sound volume to ctrl
+			on error
+				# do nothing
+			end try
+		end if
+	end tell
+	
+end alfred_script
