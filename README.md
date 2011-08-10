@@ -24,6 +24,11 @@ Once installed with Alfred you can run the following commands
     spot 50     ::  Sets the volume to the number specified after 'spot'
     
 
+Download
+----------------
+[http://cl.ly/1t0s2J0O2l112I001B3u](http://cl.ly/1t0s2J0O2l112I001B3u)
+    
+
 ## Version History ##
 ### 1.0.0 - August 9, 2011###
  
