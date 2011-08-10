@@ -51,11 +51,15 @@ Examples
 
 Download
 ----------------
-[http://cl.ly/3N2D0c1G0p1G3W2U2T0j](http://cl.ly/3N2D0c1G0p1G3W2U2T0j)
+[http://cl.ly/041f3n2H213a3k1V2T2x](http://cl.ly/041f3n2H213a3k1V2T2x)
     
 
 ## Version History ##
-### 1.0.1 - August 9, 2011###
+### 1.0.2 - August 10, 2011###
+ 
+- Added functionality to add and info returned from 'spot i OPT' automatically to the clipboard
+
+### 1.0.1 - August 10, 2011###
  
 - Added support for track information and growl
 

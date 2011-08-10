@@ -173,6 +173,7 @@ on alfred_script(ctrl)
 	end tell
 	
 	if notify_desc is not equal to "" then
+		set the clipboard to notify_desc as text
 		sendMsg(notify_name, notify_title, notify_desc, notify_art)
 	end if
 end alfred_script
