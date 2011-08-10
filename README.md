@@ -57,7 +57,7 @@ Download
 ## Version History ##
 ### 1.0.2 - August 10, 2011###
  
-- Added functionality to add and info returned from 'spot i OPT' automatically to the clipboard
+- Added functionality to add any info returned from 'spot i OPT' automatically to the clipboard
 
 ### 1.0.1 - August 10, 2011###
  
