@@ -51,7 +51,7 @@ Examples
 
 Download
 ----------------
-[http://cl.ly/041f3n2H213a3k1V2T2x](http://cl.ly/041f3n2H213a3k1V2T2x)
+[Spotify Controls](http://dl.dropbox.com/u/45930/Alfred%20Apps/Spotify%20Controls/Spotify%20Controls.alfredextension)
     
 
 ## Version History ##
