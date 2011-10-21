@@ -37,7 +37,11 @@ on sendMsg(nm, t, d, art)
 		set the allNotificationsList to {nm}
 		set the enabledNotificationsList to {nm}
 		register as application "Spotify" all notifications allNotificationsList default notifications enabledNotificationsList icon of application "Spotify"
-		notify with name nm title t description d application name "Spotify" image art
+		if art is missing value then
+			notify with name nm title t description d application name "Spotify" icon of application "Spotify.app"
+		else
+			notify with name nm title t description d application name "Spotify" image art
+		end if
 	end tell
 end sendMsg
 
@@ -105,7 +109,12 @@ on alfred_script(ctrl)
 " & album of current track
 			
 		else if ctrl starts with "i" then
-			set notify_art to artwork of current track
+			try
+				set notify_art to artwork of current track
+			on error
+				set notify_art to ""
+			end try
+			
 			set notify_name to "Track Information"
 			
 			if opt is equal to "artist" then
