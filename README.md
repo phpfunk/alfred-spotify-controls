@@ -6,7 +6,9 @@ An AppleScript so you can control Spotify from [Alfred App](http://alfredapp.com
 Installation
 ----------------
 
-To install Spotify Controls in Alfred double click on the extension file: Spotify-Controls.alfredextension
+To install Spotify Controls in Alfred double click on the extension file: Spotify-Controls.alfredextension.
+
+*NOTE*: You must have the application 'GrowlHelperApp' installed to use this application as-is. If not you can manually remove the growl portion of this application or try changing 'tell application "GrowlHelperApp" to tell application "Growl".
 
 How to use
 ----------------
@@ -55,6 +57,10 @@ Download
     
 
 ## Version History ##
+### 1.0.3 - October 20, 2011###
+ 
+- Fixed issue if no album artwork exists, Growl will use the Spotify icon
+
 ### 1.0.2 - August 10, 2011###
  
 - Added functionality to add any info returned from 'spot i OPT' automatically to the clipboard
