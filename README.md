@@ -57,6 +57,10 @@ Download
     
 
 ## Version History ##
+### 1.0.4 - October 25, 2011###
+ 
+- Added growl notification if you call an invalid argument. IE: 'spot i hey'
+
 ### 1.0.3 - October 20, 2011###
  
 - Fixed issue if no album artwork exists, Growl will use the Spotify icon

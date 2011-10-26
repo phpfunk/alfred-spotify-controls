@@ -1,188 +1,3 @@
-### Controls ####
-# play
-# pause or stop
-# mute (will toggle from mute to unmuted)
-# unmute
-# next
-# prev
-# quit, end, kill
-# start or init
-# now or current (Growl Alert)
-# i (Growl Alert - with an option from below)
-# -- artist
-# -- album
-# -- disc
-# -- duration or time
-# -- count or plays
-# -- track
-# -- starred
-# -- popularity or rank
-# -- id
-# -- name or song
-# -- album_artist
-# -- url
-################################
-# Pause Example: spot pause
-# Change Volume: spot 75
-# Mute: spot mute
-# Unmute: spot mute || spot unmute
-# Start App: spot start
-# Kill App: spot kill
-# Current Track: spot current || spot now
-# Track Info: spot i duration || spot i id || spot i OPTION
-### END ####
-
-on sendMsg(nm, t, d, art)
-	tell application "GrowlHelperApp"
-		set the allNotificationsList to {nm}
-		set the enabledNotificationsList to {nm}
-		register as application "Spotify" all notifications allNotificationsList default notifications enabledNotificationsList icon of application "Spotify"
-		if art is missing value then
-			notify with name nm title t description d application name "Spotify" icon of application "Spotify.app"
-		else
-			notify with name nm title t description d application name "Spotify" image art
-		end if
-	end tell
-end sendMsg
-
-to splitString(aString, delimiter)
-	set retVal to {}
-	set prevDelimiter to AppleScript's text item delimiters
-	log delimiter
-	set AppleScript's text item delimiters to {delimiter}
-	set retVal to every text item of aString
-	set AppleScript's text item delimiters to prevDelimiter
-	return retVal
-end splitString
-
-to calcTime(t)
-	set m to (t div 60 as string)
-	set s to t mod 60
-	
-	if s is less than 10 then
-		set s to "0" & (s as string)
-	else
-		set s to (s as string)
-	end if
-	
-	return m & ":" & s
-end calcTime
-
-on alfred_script(ctrl)
-	
-	set notify_name to ""
-	set notify_title to ""
-	set notify_desc to ""
-	set notify_art to ""
-	set tmp to my splitString(ctrl, " ")
-	try
-		set opt to item 2 of tmp
-	on error
-		set opt to "blank"
-	end try
-	
-	tell application "Spotify"
-		if ctrl is equal to "play" or ctrl is equal to "pause" then
-			playpause
-		else if ctrl is equal to "stop" then
-			pause
-		else if ctrl is equal to "next" then
-			next track
-		else if ctrl is equal to "prev" then
-			previous track
-		else if ctrl is equal to "mute" then
-			if sound volume is less than or equal to 0 then
-				set sound volume to 100
-			else
-				set sound volume to 0
-			end if
-		else if ctrl is equal to "quit" or ctrl is equal to "kill" or ctrl is equal to "end" then
-			quit
-		else if ctrl is equal to "start" or ctrl is equal to "init" then
-			activate
-		else if ctrl is equal to "now" or ctrl is equal to "current" then
-			set notify_art to artwork of current track
-			set notify_name to "Track Information"
-			set notify_title to "Now Playing"
-			set notify_desc to name of current track & " (" & my calcTime(duration of current track) & ")" & "
+### Controls ##### play# pause or stop# mute (will toggle from mute to unmuted)# unmute# next# prev# quit, end, kill# start or init# now or current (Growl Alert)# i (Growl Alert - with an option from below)# -- artist# -- album# -- disc# -- duration or time# -- count or plays# -- track# -- starred# -- popularity or rank# -- id# -- name or song# -- album_artist# -- url################################# Pause Example: spot pause# Change Volume: spot 75# Mute: spot mute# Unmute: spot mute || spot unmute# Start App: spot start# Kill App: spot kill# Current Track: spot current || spot now# Track Info: spot i duration || spot i id || spot i OPTION### END ####on sendMsg(nm, t, d, art)	tell application "GrowlHelperApp"		set the allNotificationsList to {nm}		set the enabledNotificationsList to {nm}		register as application "Spotify" all notifications allNotificationsList default notifications enabledNotificationsList icon of application "Spotify"		if art is missing value then			notify with name nm title t description d application name "Spotify" icon of application "Spotify.app"		else			notify with name nm title t description d application name "Spotify" image art		end if	end tellend sendMsgto splitString(aString, delimiter)	set retVal to {}	set prevDelimiter to AppleScript's text item delimiters	log delimiter	set AppleScript's text item delimiters to {delimiter}	set retVal to every text item of aString	set AppleScript's text item delimiters to prevDelimiter	return retValend splitStringto calcTime(t)	set m to (t div 60 as string)	set s to t mod 60		if s is less than 10 then		set s to "0" & (s as string)	else		set s to (s as string)	end if		return m & ":" & send calcTimeon alfred_script(ctrl)		set notify_name to ""	set notify_title to ""	set notify_desc to ""	set notify_art to ""	set tmp to my splitString(ctrl, " ")	try		set opt to item 2 of tmp	on error		set opt to "blank"	end try		tell application "Spotify"		if ctrl is equal to "play" or ctrl is equal to "pause" then			playpause		else if ctrl is equal to "stop" then			pause		else if ctrl is equal to "next" then			next track		else if ctrl is equal to "prev" then			previous track		else if ctrl is equal to "mute" then			if sound volume is less than or equal to 0 then				set sound volume to 100			else				set sound volume to 0			end if		else if ctrl is equal to "quit" or ctrl is equal to "kill" or ctrl is equal to "end" then			quit		else if ctrl is equal to "start" or ctrl is equal to "init" then			activate		else if ctrl is equal to "now" or ctrl is equal to "current" then			set notify_art to artwork of current track			set notify_name to "Track Information"			set notify_title to "Now Playing"			set notify_desc to name of current track & " (" & my calcTime(duration of current track) & ")" & "
 " & artist of current track & "
-" & album of current track
-			
-		else if ctrl starts with "i" then
-			try
-				set notify_art to artwork of current track
-			on error
-				set notify_art to ""
-			end try
-			
-			set notify_name to "Track Information"
-			
-			if opt is equal to "artist" then
-				set notify_title to "Artist Name"
-				set notify_desc to artist of current track
-				
-			else if opt is equal to "album" then
-				set notify_title to "Album Name"
-				set notify_desc to album of current track
-				
-			else if opt is equal to "disc" then
-				set notify_title to "Disc Number"
-				set notify_desc to (disc number of current track as string)
-				
-			else if opt is equal to "duration" or opt is equal to "time" then
-				set notify_title to "Duration"
-				set notify_desc to my calcTime(duration of current track)
-				
-			else if opt is equal to "count" or opt is equal to "plays" then
-				set notify_title to "Play Count"
-				set notify_desc to (played count of current track as string)
-				
-			else if opt is equal to "track" then
-				set notify_title to "Track Number"
-				set notify_desc to (track number of current track as string)
-				
-			else if opt is equal to "starred" then
-				set notify_title to "Starred"
-				if starred of current track is equal to true then
-					set notify_desc to "Yes"
-				else
-					set notify_desc to "No"
-				end if
-				
-			else if opt is equal to "popularity" or opt is equal to "rank" then
-				set notify_title to "Popularity"
-				set notify_desc to (popularity of current track as string) & " out of 100"
-				
-			else if opt is equal to "id" then
-				set notify_title to "ID"
-				set notify_desc to id of current track
-				
-			else if opt is equal to "name" or opt is equal to "song" then
-				set notify_title to "Track Name"
-				set notify_desc to name of current track
-				
-			else if opt is equal to "album_artist" then
-				set notify_title to "Album Artist"
-				set notify_desc to album artist of current track
-				
-			else if opt is equal to "url" then
-				set notify_title to "Spotify URL"
-				set notify_desc to spotify url of current track
-				
-			end if
-			
-		else
-			try
-				(ctrl as number) div 1
-				set sound volume to ctrl
-			on error
-				# do nothing
-			end try
-		end if
-	end tell
-	
-	if notify_desc is not equal to "" then
-		set the clipboard to notify_desc as text
-		sendMsg(notify_name, notify_title, notify_desc, notify_art)
-	end if
-end alfred_script
+" & album of current track					else if ctrl starts with "i" then			try				set notify_art to artwork of current track			on error				set notify_art to ""			end try						set notify_name to "Track Information"						if opt is equal to "artist" then				set notify_title to "Artist Name"				set notify_desc to artist of current track							else if opt is equal to "album" then				set notify_title to "Album Name"				set notify_desc to album of current track							else if opt is equal to "disc" then				set notify_title to "Disc Number"				set notify_desc to (disc number of current track as string)							else if opt is equal to "duration" or opt is equal to "time" then				set notify_title to "Duration"				set notify_desc to my calcTime(duration of current track)							else if opt is equal to "count" or opt is equal to "plays" then				set notify_title to "Play Count"				set notify_desc to (played count of current track as string)							else if opt is equal to "track" then				set notify_title to "Track Number"				set notify_desc to (track number of current track as string)							else if opt is equal to "starred" then				set notify_title to "Starred"				if starred of current track is equal to true then					set notify_desc to "Yes"				else					set notify_desc to "No"				end if							else if opt is equal to "popularity" or opt is equal to "rank" then				set notify_title to "Popularity"				set notify_desc to (popularity of current track as string) & " out of 100"							else if opt is equal to "id" then				set notify_title to "ID"				set notify_desc to id of current track							else if opt is equal to "name" or opt is equal to "song" then				set notify_title to "Track Name"				set notify_desc to name of current track							else if opt is equal to "album_artist" then				set notify_title to "Album Artist"				set notify_desc to album artist of current track							else if opt is equal to "url" then				set notify_title to "Spotify URL"				set notify_desc to spotify url of current track							else				set notify_title to "Invalid Argument"				set notify_desc to "The option '" & opt & "' is invalid."			end if					else			try				(ctrl as number) div 1				set sound volume to ctrl			on error				# do nothing			end try		end if	end tell		if notify_desc is not equal to "" then		set the clipboard to notify_desc as text		sendMsg(notify_name, notify_title, notify_desc, notify_art)	end ifend alfred_script
