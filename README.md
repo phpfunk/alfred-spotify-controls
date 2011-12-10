@@ -8,8 +8,6 @@ Installation
 
 To install Spotify Controls in Alfred double click on the extension file: Spotify-Controls.alfredextension.
 
-*NOTE*: You must have the application 'GrowlHelperApp' installed to use this application as-is. If not you can manually remove the growl portion of this application or try changing 'tell application "GrowlHelperApp" to tell application "Growl".
-
 How to use
 ----------------
 
@@ -57,6 +55,10 @@ Download
     
 
 ## Version History ##
+### 1.0.5 - December 9, 2011###
+ 
+- Updated growl notifications to updated spec on growl.info. Should work with all versions of growl now.
+
 ### 1.0.4 - October 25, 2011###
  
 - Added growl notification if you call an invalid argument. IE: 'spot i hey'
