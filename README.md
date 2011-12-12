@@ -6,7 +6,7 @@ An AppleScript so you can control Spotify from [Alfred App](http://alfredapp.com
 Installation
 ----------------
 
-To install Spotify Controls in Alfred double click on the extension file: Spotify-Controls.alfredextension.
+To install Spotify Controls in Alfred double click on the extension file.
 
 How to use
 ----------------
@@ -47,11 +47,15 @@ Examples
     $ spot i artist
     $ spot i rank
     $ spot i url
+    
+Notes
+----------------
+All growl notifications copy the contents of the notification automatically to your clipboard.
 
 
 Download
 ----------------
-[Spotify Controls](http://dl.dropbox.com/u/45930/Alfred%20Apps/Spotify%20Controls/Spotify%20Controls.alfredextension)
+[Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/downloads)
     
 
 ## Version History ##
