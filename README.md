@@ -14,28 +14,27 @@ How to use
 Once installed with Alfred you can run the following commands
 
 
-    spot start  ::  To open or activate the Spotify application (can also use 'spot init')
-    spot quit   ::  To quit the application (can also use 'spot end' or 'spot kill')
-    spot pause  ::  Pause the current track (can also use 'spot stop')
-    spot play   ::  Play the current track
-    spot next   ::  Go to the next track
-    spot prev   ::  Go to the previous track
-    spot mute   ::  Toggles mute from on/off
+    spot start  ::  To open or activate the Spotify application (can also use s or init)
+    spot quit   ::  To quit the application (can also use kill, end, exit, q or e)
+    spot pause  ::  Pause the current track (can also use stop or no command)
+    spot play   ::  Play the current track (can also use no command)
+    spot next   ::  Go to the next track (can also use n or >)
+    spot prev   ::  Go to the previous track (can also use pr, previous, <, or <<)
+    spot mute   ::  Toggles mute from on/off (can also use m)
     spot 50     ::  Sets the volume to the number specified after 'spot'
-    spot now    ::  Growl notification of current track name, artist, album and duration (can also use 'spot current')
-    spot i OPT  ::  Growl notification of information requested, replace OPT with one of following
-      artist        ::  For artist name
-      album         ::  For album name
-      disc          ::  For disc number
-      time          ::  For track time in minutes and seconds (can also use duration)
-      plays         ::  For your play count of the current track (can also use count)
-      track         ::  For the track number
-      starred       ::  If you have this track starred or not
-      rank          ::  Track rank out of 100 (can also use popularity)
-      id            ::  The track ID
-      song          ::  The current track name (can also use name)
-      album_artist  ::  The album artist
-      url           ::  The spotify URL
+    
+    Growl Notifications (automatically copies results to the clipboard)
+    spot now      ::  Current track name, artist, album and duration (can also use i or current)
+    spot artist   ::  Artist and Album Artist if applicable
+    spot album    ::  Album name
+    spot disc     ::  Disc # if available
+    spot time     ::  Track duration (can also use t or duration)
+    spot plays    ::  Total plays for this track (can also use count)
+    spot track    ::  The song name (can also use t or song or name)
+    spot starred  ::  If the song is starred or not (can also use star or fav)
+    spot rank     ::  The popularity of the song from 0 to 100 (can also use pop or popularity)
+    spot id       ::  The spotify ID
+    spot url      ::  The spotify URL
       
 
 Examples
@@ -44,13 +43,18 @@ Examples
     $ spot pause
     $ spot now
     $ spot 75
-    $ spot i artist
-    $ spot i rank
-    $ spot i url
+    $ spot artist
+    $ spot rank
+    $ spot url
+    $ spot <<
+    $ spot <
+    $ spot
     
 Notes
 ----------------
 All growl notifications copy the contents of the notification automatically to your clipboard.
+
+This extension prior to 1.1 had you get info from Spotify by calling: spot i OPT. That will still work but you no longer need to do that. You can just call spot OPT now. The 'spot i' method will always work in order to maintain backwards compatibility.
 
 
 Download
@@ -59,6 +63,17 @@ Download
     
 
 ## Version History ##
+### 1.1.0 - December 12, 2011###
+ 
+- Removed need to return info by calling 'spot i OPT' you can now just use 'spot OPT'. The former will still work.
+- Added more aliases for controls
+- Added support for true previous track 'spot <<' will take you to the actual previous track and not just the beginning of the same song.
+- When calling the next or previous track, growl will automatically fire to show what the track is
+- Combined artist and album_artist into the same method and will return both if they are not equal. If equal just the artist will be returned
+- Added new internal method of filterData()
+- Combined play, pause and stop into the same method for 'playpause'
+- If you call this extension with no command it will use 'playpause'
+
 ### 1.0.5 - December 9, 2011###
  
 - Updated growl notifications to updated spec on growl.info. Should work with all versions of growl now.
