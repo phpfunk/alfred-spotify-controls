@@ -1,284 +1,126 @@
-### Controls ####
-# play, pause, stop, p, NULL
-# mute, unmute, m
-# next, n, >
-# prev, pr, previous, <, <<
-# << (takes you to the actual previous track, think double click)
-# quit, end, kill, exit, e, q
-# start, init, s
-# now, i, current
-# artist
-# album
-# disc
-# duration, time, d
-# count, plays
-# track, t, name, song
-# starred, star, fav
-# popularity, rank, pop
-# id
-# url 
-# search
-################################
-# Pause Example: spot pause
-# Change Volume: spot 75
-# Mute: spot mute
-# Unmute: spot mute || spot unmute
-# Start App: spot start
-# Kill App: spot kill
-# Current Track: spot current || spot now
-# Track Info: spot duration || spot id || spot OPT
-# Search: spot search de la soul
-# Artist Only Search: spot search artist:de la soul
-# Album Only Search: spot search album:stakes is high
-# Track Only Search: spot search track:de la soul
-### END ####
+Spotify Controls for Alfred (Beta Testing Spotify Build: 0.8.0.873)
+============
 
-to calcTime(t)
-	set m to (t div 60 as string)
-	set s to t mod 60
-	
-	if s is less than 10 then
-		set s to "0" & (s as string)
-	else
-		set s to (s as string)
-	end if
-	
-	return m & ":" & s
-end calcTime
+An AppleScript so you can control Spotify from [Alfred App](http://alfredapp.com/). You will need Alfred and the Powerpack to use this.
 
-on filterData(s, prepend, empty)
-	if s is missing value or s is equal to "" or s is equal to "0" then
-		if empty is true then
-			return ""
-		else
-			return "Not Found"
-		end if
-	else
-		return prepend & s
-	end if
-end filterData
+Installation
+----------------
 
-on replaceText(find, replace, someText)
-	set prevTIDs to text item delimiters of AppleScript
-	set text item delimiters of AppleScript to find
-	set someText to text items of someText
-	set text item delimiters of AppleScript to replace
-	set someText to "" & someText
-	set text item delimiters of AppleScript to prevTIDs
-	return someText
-end replaceText
+To install Spotify Controls in Alfred double click on the extension file.
 
-on sendMsg(nm, t, d, art)
-	
-	tell application "System Events"
-		set isRunning to (count of (every process whose bundle identifier is "com.Growl.GrowlHelperApp")) > 0
-	end tell
-	
-	if isRunning then
-		tell application id "com.Growl.GrowlHelperApp"
-			set the allNotificationsList to {nm}
-			set the enabledNotificationsList to {nm}
-			
-			register as application "Spotify" all notifications allNotificationsList default notifications enabledNotificationsList icon of application "Spotify"
-			
-			if art is missing value or art is equal to "" then
-				notify with name nm title t description d application name "Spotify" icon of application "Spotify"
-			else
-				notify with name nm title t description d application name "Spotify" image art
-			end if
-			
-		end tell
-	end if
-	
-end sendMsg
+How to use
+----------------
 
-to splitString(aString, delimiter)
-	set retVal to {}
-	set prevDelimiter to AppleScript's text item delimiters
-	log delimiter
-	set AppleScript's text item delimiters to {delimiter}
-	set retVal to every text item of aString
-	set AppleScript's text item delimiters to prevDelimiter
-	return retVal
-end splitString
+Once installed with Alfred you can run the following commands
 
-on alfred_script(q)
-	
-	set notify_name to "Track Information"
-	set notify_title to ""
-	set notify_desc to ""
-	set notify_art to ""
-	
-	#Get i OPT
-	if " i " is in q then
-		try
-			set tmp to my splitString(q, " ")
-			set opt to item 2 of tmp
-		on error
-			set opt to "blank"
-		end try
-		
-		#backwards compatibility
-		if opt is not "blank" then
-			set q to opt
-		end if
-	end if
-	
-	#Command Hashes
-	set n to {"n", "next", ">"}
-	set p to {"p", "play", "pause", "stop", ""}
-	set pr to {"pr", "prev", "previous", "<", "<<"}
-	set s to {"s", "start", "init"}
-	set e to {"e", "q", "quit", "kill", "end", "exit"}
-	set m to {"m", "mute", "unmute"}
-	set i to {"i", "now", "current"}
-	set t to {"t", "track", "name", "song"}
-	set d to {"d", "duration", "time"}
-	set c to {"count", "plays"}
-	set f to {"star", "starred", "fav"}
-	set po to {"pop", "popularity", "rank"}
-	set ar to {"artist", "album_artist"}
-	set h to {"help", "?"}
-	
-	
-	tell application "Spotify"
-		
-		set rpeating to true
-		
-		try
-			set notify_art to artwork of current track
-		on error
-			set notify_art to ""
-		end try
-		
-		
-		if q is in p then
-			playpause
-		else if q is in n then
-			next track
-			my alfred_script("i")
-		else if q is in pr then
-			previous track
-			if q is equal to "<<" then
-				previous track
-			end if
-			my alfred_script("i")
-		else if q is in m then
-			if sound volume is less than or equal to 0 then
-				set sound volume to 100
-			else
-				set sound volume to 0
-			end if
-		else if q is in e then
-			quit
-		else if q is in s then
-			activate
-		else if q is in i then
-			set c_album to my filterData(album of current track, " on ", true)
-			set notify_title to name of current track & " (" & my calcTime(duration of current track) & ")"
-			set notify_desc to "By " & artist of current track & c_album
-			
-		else if q is in ar then
-			set arr to my filterData(artist of current track, "", false)
-			set album_arr to my filterData(album artist of current track, "", true)
-			if arr is equal to album_arr or album_arr is equal to "" then
-				set notify_title to "Artist"
-				set notify_desc to arr
-			else
-				set notify_title to "Artist / Album Artist"
-				set notify_desc to "Artist: " & arr & "
-Album Artist: " & album_arr
-			end if
-			
-		else if q is equal to "album" then
-			set notify_title to "Album Name"
-			set notify_desc to my filterData(album of current track, "", false)
-			
-		else if q is equal to "disc" then
-			set notify_title to "Disc Number"
-			set notify_desc to my filterData((disc number of current track as string), "", false)
-			
-		else if q is in d then
-			set notify_title to "Duration"
-			set notify_desc to my calcTime(duration of current track)
-			
-		else if q is in c then
-			set notify_title to "Play Count"
-			set notify_desc to (played count of current track as string)
-			
-		else if q is in f then
-			set notify_title to "Starred"
-			if starred of current track is equal to true then
-				set notify_desc to "Yes"
-			else
-				set notify_desc to "No"
-			end if
-			
-		else if q is in po then
-			set notify_title to "Popularity"
-			set notify_desc to (popularity of current track as string) & " out of 100"
-			
-		else if q is equal to "id" then
-			set notify_title to "ID"
-			set notify_desc to id of current track
-			
-		else if q is in t then
-			set num to my filterData((track number of current track as string), "", true)
-			if num is not equal to "" then
-				set num to " (#" & num & ")"
-			end if
-			
-			set notify_title to "Current Track" & num
-			set notify_desc to name of current track
-			
-		else if q is equal to "url" then
-			set notify_title to "Spotify URL"
-			set notify_desc to spotify url of current track
-			
-		else if "search" is in q then
-			activate
-			open location "spotify:search:" & my replaceText("search ", "", q)
-			
-		else if "app" is in q then
-			activate
-			open location "spotify:app:" & my replaceText("app ", "", q)
-			
-		else if q is equal to "shuffle" then
-			if shuffling is enabled then
-				set shuffling to false
-			else
-				set shuffling to true
-			end if
-			
-		else if q is equal to "repeat" then
-			if repeating is enabled then
-				set repeating to false
-			else
-				set repeating to true
-			end if
-			
-		else if q is equal to "dev" then
-			set notify_title to "Developer Information"
-			set notify_desc to "Jeff Johns | http://phpfunk.me | @phpfunk"
-			set notify_art to ""
-			
-		else if q is in h then
-			open location "https://github.com/phpfunk/alfred-spotify-controls/blob/spotify-0.8.0.873/README.md"
-			
-		else
-			try
-				(q as number) div 1
-				set sound volume to q
-			on error
-				set notify_title to "Invalid Argument"
-				set notify_desc to "The option '" & q & "' is invalid. Please try again."
-				set notify_art to ""
-			end try
-		end if
-	end tell
-	
-	if notify_desc is not equal to "" then
-		set the clipboard to notify_desc as text
-		sendMsg(notify_name, notify_title, notify_desc, notify_art)
-	end if
-end alfred_script
+
+    spot start    ::  To open or activate the Spotify application (can also use s or init)
+    spot quit     ::  To quit the application (can also use kill, end, exit, q or e)
+    spot pause    ::  Pause the current track (can also use stop or no command)
+    spot play     ::  Play the current track (can also use no command)
+    spot next     ::  Go to the next track (can also use n or >)
+    spot prev     ::  Go to the previous track (can also use pr, previous, <, or <<)
+    spot mute     ::  Toggles mute from on/off (can also use m)
+    spot 50       ::  Sets the volume to the number specified after 'spot'
+    spot search   ::  Search spotify
+    spot app      ::  Open spotify application
+    spot shuffle  ::  Toggle shuffle
+    spot repeat   ::  Toggle repeat
+    spot help     ::  Open this help file
+    spot dev      ::  My info
+    
+    Growl Notifications (automatically copies results to the clipboard)
+    spot now      ::  Current track name, artist, album and duration (can also use i or current)
+    spot artist   ::  Artist and Album Artist if applicable
+    spot album    ::  Album name
+    spot disc     ::  Disc # if available
+    spot time     ::  Track duration (can also use t or duration)
+    spot plays    ::  Total plays for this track (can also use count)
+    spot track    ::  The song name (can also use t or song or name)
+    spot starred  ::  If the song is starred or not (can also use star or fav)
+    spot rank     ::  The popularity of the song from 0 to 100 (can also use pop or popularity)
+    spot id       ::  The spotify ID
+    spot url      ::  The spotify URL
+      
+
+Examples
+----------------
+    $ spot next
+    $ spot pause
+    $ spot now
+    $ spot 75
+    $ spot artist
+    $ spot rank
+    $ spot url
+    $ spot <<
+    $ spot <
+    $ spot
+    $ spot search de la soul
+    $ spot search artist:de la soul
+    $ spot search album:stakes is high
+    $ spot search track:sunshine
+    $ spot app lastfm
+    $ spot shuffle
+    $ spot repeat
+    $ spot help
+    $ spot dev
+    
+Notes
+----------------
+All growl notifications copy the contents of the notification automatically to your clipboard.
+
+This extension prior to 1.1 had you get info from Spotify by calling: spot i OPT. That will still work but you no longer need to do that. You can just call spot OPT now. The 'spot i' method will always work in order to maintain backwards compatibility.
+
+
+Download
+----------------
+[Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/downloads)
+    
+
+## Version History ##
+### 1.3.0 - December 12, 2011 ###
+
+- Added ability to open applications
+- Added ability to toggle shuffling
+- Added ability to toggle repeating
+- Added help link
+- Add developer information call
+
+### 1.2.0 - December 12, 2011 ###
+
+- Added search capabilities ;)
+
+### 1.1.0 - December 12, 2011###
+ 
+- Removed need to return info by calling 'spot i OPT' you can now just use 'spot OPT'. The former will still work.
+- Added more aliases for controls
+- Added support for true previous track 'spot <<' will take you to the actual previous track and not just the beginning of the same song.
+- When calling the next or previous track, growl will automatically fire to show what the track is
+- Combined artist and album_artist into the same method and will return both if they are not equal. If equal just the artist will be returned
+- Added new internal method of filterData()
+- Combined play, pause and stop into the same method for 'playpause'
+- If you call this extension with no command it will use 'playpause'
+
+### 1.0.5 - December 9, 2011###
+ 
+- Updated growl notifications to updated spec on growl.info. Should work with all versions of growl now.
+
+### 1.0.4 - October 25, 2011###
+ 
+- Added growl notification if you call an invalid argument. IE: 'spot i hey'
+
+### 1.0.3 - October 20, 2011###
+ 
+- Fixed issue if no album artwork exists, Growl will use the Spotify icon
+
+### 1.0.2 - August 10, 2011###
+ 
+- Added functionality to add any info returned from 'spot i OPT' automatically to the clipboard
+
+### 1.0.1 - August 10, 2011###
+ 
+- Added support for track information and growl
+
+### 1.0.0 - August 9, 2011###
+ 
+- Commit: Initial Release
