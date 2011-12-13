@@ -35,6 +35,7 @@ Once installed with Alfred you can run the following commands
     spot rank     ::  The popularity of the song from 0 to 100 (can also use pop or popularity)
     spot id       ::  The spotify ID
     spot url      ::  The spotify URL
+    spot search   ::  Search spotify
       
 
 Examples
@@ -49,6 +50,10 @@ Examples
     $ spot <<
     $ spot <
     $ spot
+    $ spot search de la soul
+    $ spot search artist:de la soul
+    $ spot search album:stakes is high
+    $ spot search track:sunshine
     
 Notes
 ----------------
@@ -63,6 +68,10 @@ Download
     
 
 ## Version History ##
+### 1.2.0 - December 12, 2011 ###
+
+- Added search capabilities ;)
+
 ### 1.1.0 - December 12, 2011###
  
 - Removed need to return info by calling 'spot i OPT' you can now just use 'spot OPT'. The former will still work.
