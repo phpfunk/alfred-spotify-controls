@@ -62,7 +62,7 @@ Examples
     $ spot app lastfm
     $ spot shuffle
     $ spot repeat
-    $ spot help https://github.com/phpfunk/alfred-spotify-controls/blob/master/README.md
+    $ spot help
     $ spot dev
     
 Notes
