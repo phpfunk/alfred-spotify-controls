@@ -23,9 +23,9 @@ Once installed with Alfred you can run the following commands
     spot mute     ::  Toggles mute from on/off (can also use m)
     spot 50       ::  Sets the volume to the number specified after 'spot'
     spot search   ::  Search spotify
-    spot app      ::  Open spotify application
-    spot shuffle  ::  Toggle shuffle
-    spot repeat   ::  Toggle repeat
+    spot app      ::  Open spotify application (only available in 0.8.0 or above)
+    spot shuffle  ::  Toggle shuffle (only available in 0.8.0 or above)
+    spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
     spot help     ::  Open this help file
     spot dev      ::  My info
     
@@ -62,7 +62,7 @@ Examples
     $ spot app lastfm
     $ spot shuffle
     $ spot repeat
-    $ spot help
+    $ spot help https://github.com/phpfunk/alfred-spotify-controls/blob/master/README.md
     $ spot dev
     
 Notes
