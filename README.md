@@ -1,4 +1,4 @@
-Spotify Controls for Alfred (Beta Testing Spotify Build: 0.8.0.873)
+Spotify Controls for Alfred
 ============
 
 An AppleScript so you can control Spotify from [Alfred App](http://alfredapp.com/). You will need Alfred and the Powerpack to use this.
@@ -78,7 +78,7 @@ Download
     
 
 ## Version History ##
-### 1.3.0 - December 12, 2011 ###
+### 1.3.0 - December 14, 2011 ###
 
 - Added ability to open applications
 - Added ability to toggle shuffling
