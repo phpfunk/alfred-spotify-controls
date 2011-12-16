@@ -40,7 +40,8 @@ Once installed with Alfred you can run the following commands
     spot starred  ::  If the song is starred or not (can also use star or fav)
     spot rank     ::  The popularity of the song from 0 to 100 (can also use pop or popularity)
     spot id       ::  The spotify ID
-    spot url      ::  The spotify URL
+    spot url      ::  The spotify HTTP URL
+    spot appurl   ::  The spotify application URL
       
 
 Examples
@@ -78,6 +79,11 @@ Download
     
 
 ## Version History ##
+### 1.3.1 - December 16, 2011 ###
+
+- spot url now returns the actual HTTP url for linking (thanks gfontenot)
+- spot appurl will return the actual application URL
+
 ### 1.3.0 - December 14, 2011 ###
 
 - Added ability to open applications
