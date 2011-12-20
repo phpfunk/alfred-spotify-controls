@@ -79,6 +79,10 @@ Download
     
 
 ## Version History ##
+### 1.3.2 - December 20, 2011 ###
+
+- Fixed issue with repeat and shuffle
+
 ### 1.3.1 - December 16, 2011 ###
 
 - spot url now returns the actual HTTP url for linking (thanks gfontenot)
