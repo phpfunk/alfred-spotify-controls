@@ -79,6 +79,10 @@ Download
     
 
 ## Version History ##
+### 1.3.3 - December 20, 2011 ###
+
+- Arg, missed a testing line in the script, removed it ;)
+
 ### 1.3.2 - December 20, 2011 ###
 
 - Fixed issue with repeat and shuffle

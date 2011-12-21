@@ -144,8 +144,6 @@ on alfred_script(q)
 	
 	tell application "Spotify"
 		
-		set rpeating to true
-		
 		try
 			set notify_art to artwork of current track
 		on error
