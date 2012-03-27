@@ -79,7 +79,7 @@ Download
     
 
 ## Version History ##
-### 1.3.4 - March, 26 2012 ###
+### 1.3.4 - March 26, 2012 ###
 
 - Now checks if shuffling and repeating are enabled in current view before toggling them
 
