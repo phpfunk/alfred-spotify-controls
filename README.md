@@ -79,6 +79,10 @@ Download
     
 
 ## Version History ##
+### 1.3.6 - April 8, 2012
+
+- Added version variable to show Spotify version and copy to clipboard
+
 ### 1.3.5 - March 26, 2012
 
 - Removed log call in splitString, hoping it fixes an issue for a user
