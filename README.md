@@ -42,6 +42,7 @@ Once installed with Alfred you can run the following commands
     spot id       ::  The spotify ID
     spot url      ::  The spotify HTTP URL
     spot appurl   ::  The spotify application URL
+    spot version  ::  The spotify application version
       
 
 Examples
@@ -65,6 +66,7 @@ Examples
     $ spot repeat
     $ spot help
     $ spot dev
+    $ spot version
     
 Notes
 ----------------
