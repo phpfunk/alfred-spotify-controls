@@ -81,6 +81,10 @@ Download
     
 
 ## Version History ##
+### 1.3.7 - July 24, 2012
+
+- Update eval of isRunning to isRunning is true to try and solve not having growl installed issue
+
 ### 1.3.6 - April 8, 2012
 
 - Added version variable to show Spotify version and copy to clipboard
