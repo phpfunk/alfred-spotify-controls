@@ -81,6 +81,10 @@ Download
     
 
 ## Version History ##
+### 1.3.8 - July 24, 2012
+
+- Add a second extension that does not use growl. Not optimal but for users with no growl installed, please use this one until I have no growl installs figured out with applescript.
+
 ### 1.3.7 - July 24, 2012
 
 - Update eval of isRunning to isRunning is true to try and solve not having growl installed issue
