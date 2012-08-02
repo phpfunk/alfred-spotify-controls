@@ -74,6 +74,10 @@ All growl notifications copy the contents of the notification automatically to y
 
 This extension prior to 1.1 had you get info from Spotify by calling: spot i OPT. That will still work but you no longer need to do that. You can just call spot OPT now. The 'spot i' method will always work in order to maintain backwards compatibility.
 
+Growl vs. No Growl
+----------------
+Two versions of the extension are available, one with Growl and one without. If you wish to use the one without Growl please install the 'Spotify Controls No Growl.alfredextension' file. This will simply copy the growl notification to your clipboard, rather than display it.
+
 
 Download
 ----------------
@@ -81,6 +85,11 @@ Download
     
 
 ## Version History ##
+
+### 1.3.9 - August 2, 2012
+
+- Further removed code to support non growl version.
+
 ### 1.3.8 - July 24, 2012
 
 - Add a second extension that does not use growl. Not optimal but for users with no growl installed, please use this one until I have no growl installs figured out with applescript.
