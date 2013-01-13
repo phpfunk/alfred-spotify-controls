@@ -89,6 +89,11 @@ Download
 
 ## Version History ##
 
+### 2.1.0 - January 12, 2012
+
+- Removed basic in-app search
+- Added the ability to search albums, artist and/or tracks and have the results appear in the Alfred result list.
+
 ### 2.0.0 - January 12, 2012
 
 - Extension ported to a workflow for version 2 of Alfred.
