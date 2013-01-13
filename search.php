@@ -26,7 +26,7 @@ function arrayToXML($a)
     return $items->asXML();
 }
 
-$query  = urldecode($argv[1]);
+$query  = $argv[1];
 $tmp    = explode(' ', $query);
 $type   = $tmp[0];
 $query  = trim(str_replace($type, '', $query));
