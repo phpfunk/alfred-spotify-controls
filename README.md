@@ -89,6 +89,10 @@ Download
 
 ## Version History ##
 
+### 2.1.1 - January 13, 2012
+
+- Split all the commands into their own workflows. This will allow lists of commands to appear for Spotify.
+
 ### 2.1.0 - January 12, 2012
 
 - Removed basic in-app search
