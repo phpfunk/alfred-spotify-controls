@@ -8,7 +8,7 @@ Installation
 
 To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
-How to use
+How to use (Basic Commands)
 ----------------
 
 Once installed with Alfred you can run the following commands
@@ -22,7 +22,6 @@ Once installed with Alfred you can run the following commands
     spot prev     ::  Go to the previous track (can also use pr, previous, <, or <<)
     spot mute     ::  Toggles mute from on/off (can also use m)
     spot 50       ::  Sets the volume to the number specified after 'spot'
-    spot search   ::  Search spotify
     spot app      ::  Open spotify application (only available in 0.8.0 or above)
     spot shuffle  ::  Toggle shuffle (only available in 0.8.0 or above)
     spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
@@ -63,11 +62,6 @@ Examples
     $ spot url
     $ spot <<
     $ spot <
-    $ spot
-    $ spot search de la soul
-    $ spot search artist:de la soul
-    $ spot search album:stakes is high
-    $ spot search track:sunshine
     $ spot app lastfm
     $ spot shuffle
     $ spot repeat
@@ -75,6 +69,18 @@ Examples
     $ spot dev
     $ spot version
 
+
+How to use (Search)
+----------------
+
+You can also search inline with results showing up in the results panel of Alfred. Simply type `spot search` followed by `artist` or `album` or `track` then you query. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
+
+#### Example
+```
+spot search artist De La Soul
+spot search album Stakes is High
+spot search track Sunshine
+```
 
 Download
 ----------------
