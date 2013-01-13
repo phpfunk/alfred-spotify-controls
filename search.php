@@ -37,32 +37,37 @@ if (($type != 'artist' && $type != 'album' && $type != 'track') || strlen($query
     exit(1);
 }
 
-$max    = 15;
-$json = file_get_contents('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
-$results = array();
+$max        = 15;
+$json       = file_get_contents('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
+$results    = array();
 
 if (! empty($json)) {
-    $json = json_decode($json);
-    $x = 1;
+    $json    = json_decode($json);
+    $x       = 1;
+
     foreach ($json->{$key} as $k => $obj) {
         if ($x < $max) {
+            $name           = (isset($obj->name)) ? htmlentities($obj->name, ENT_QUOTES, 'UTF-8') : null;
+            $album          = (isset($obj->album->name)) ? htmlentities($obj->album->name, ENT_QUOTES, 'UTF-8') : null;
+            $artist_name    = (isset($obj->artists[0]->name)) ? htmlentities($obj->artists[0]->name, ENT_QUOTES, 'UTF-8') : null;
+
             if ($type == 'artist') {
                 $subtitle        = 'Artist';
-                $autocomplete    = htmlentities($obj->name, ENT_QUOTES, 'UTF-8');
+                $autocomplete    = $name;
             }
             elseif ($type == 'artist') {
-                $subtitle        = htmlentities($obj->artists[0]->name, ENT_QUOTES, 'UTF-8');
-                $autocomplete    = htmlentities($obj->artists[0]->name, ENT_QUOTES, 'UTF-8'). ' ' .htmlentities($obj->name, ENT_QUOTES, 'UTF-8');
+                $subtitle        = $artist_name;
+                $autocomplete    = $artist_name . ' ' . $name;
             }
             else {
-                $subtitle        = htmlentities($obj->artists[0]->name, ENT_QUOTES, 'UTF-8'). " - " .htmlentities($obj->album->name, ENT_QUOTES, 'UTF-8');
-                $autocomplete    = htmlentities($obj->artists[0]->name, ENT_QUOTES, 'UTF-8'). ' ' .htmlentities($obj->album->name, ENT_QUOTES, 'UTF-8');
+                $subtitle        = $artist_name . ' - ' . $album;
+                $autocomplete    = $artist_name . ' ' . $album;
             }
 
             array_push($results, array(
                 'uid'             => $type,
                 'arg'             => $obj->href,
-                'title'           => htmlentities($obj->name, ENT_QUOTES, 'UTF-8'),
+                'title'           => $name,
                 'subtitle'        => $subtitle,
                 'icon'            => 'icon.png',
                 'autocomplete'    => $autocomplete

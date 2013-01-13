@@ -89,6 +89,10 @@ Download
 
 ## Version History ##
 
+### 2.1.3 - January 13, 2012
+
+- Updated search codebase just to clean it up a bit.
+
 ### 2.1.2 - January 13, 2012
 
 - Updated search workflow so that if Spotify isn't open it activates it first, then runs search.
