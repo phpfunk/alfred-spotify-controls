@@ -21,7 +21,7 @@ Once installed with Alfred you can run the following commands
     spot next     ::  Go to the next track (can also use n or >)
     spot prev     ::  Go to the previous track (can also use pr, previous, <, or <<)
     spot mute     ::  Toggles mute from on/off (can also use m)
-    spot 50       ::  Sets the volume to the number specified after 'spot'
+    spot vol 50   ::  Sets the volume to the number specified after 'spot vol'
     spot app      ::  Open spotify application (only available in 0.8.0 or above)
     spot shuffle  ::  Toggle shuffle (only available in 0.8.0 or above)
     spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
@@ -56,7 +56,7 @@ Examples
     $ spot next
     $ spot pause
     $ spot now
-    $ spot 75
+    $ spot vol 75
     $ spot artist
     $ spot rank
     $ spot url
@@ -88,6 +88,10 @@ Download
 
 
 ## Version History ##
+
+### 2.1.4 - January 13, 2012
+
+- Updated volume controls to `spot vol {NUM}`
 
 ### 2.1.3 - January 13, 2012
 
