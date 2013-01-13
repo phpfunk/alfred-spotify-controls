@@ -6,7 +6,7 @@ An Alfred Workflow so you can control Spotify from [Alfred App](http://alfredapp
 Installation
 ----------------
 
-To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow' or drag the workflow to the workflow window in Alfred.
+To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
 How to use
 ----------------
