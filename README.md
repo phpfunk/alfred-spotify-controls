@@ -1,12 +1,12 @@
 Spotify Controls for Alfred
 ============
 
-An AppleScript so you can control Spotify from [Alfred App](http://alfredapp.com/). You will need Alfred and the Powerpack to use this.
+An Alfred Workflow so you can control Spotify from [Alfred App](http://alfredapp.com/). You will need Alfred Version 2 and the Powerpack to use this.
 
 Installation
 ----------------
 
-To install Spotify Controls in Alfred double click on the extension file.
+To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow' or drag the workflow to the workflow window in Alfred.
 
 How to use
 ----------------
@@ -28,8 +28,8 @@ Once installed with Alfred you can run the following commands
     spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
     spot help     ::  Open this help file
     spot dev      ::  My info
-    
-    Growl Notifications (automatically copies results to the clipboard)
+
+    Commands that also send a notification
     spot now      ::  Current track name, artist, album and duration (can also use i or current)
     spot artist   ::  Artist and Album Artist if applicable
     spot album    ::  Album name
@@ -43,7 +43,14 @@ Once installed with Alfred you can run the following commands
     spot url      ::  The spotify HTTP URL
     spot appurl   ::  The spotify application URL
     spot version  ::  The spotify application version
-      
+
+    Commands that also copy the result to the clipboard
+    spot id       ::  The spotify ID
+    spot url      ::  The spotify HTTP URL
+    spot appurl   ::  The spotify application URL
+    spot version  ::  The spotify application version
+
+
 
 Examples
 ----------------
@@ -67,24 +74,18 @@ Examples
     $ spot help
     $ spot dev
     $ spot version
-    
-Notes
-----------------
-All growl notifications copy the contents of the notification automatically to your clipboard.
-
-This extension prior to 1.1 had you get info from Spotify by calling: spot i OPT. That will still work but you no longer need to do that. You can just call spot OPT now. The 'spot i' method will always work in order to maintain backwards compatibility.
-
-Growl vs. No Growl
-----------------
-Two versions of the extension are available, one with Growl and one without. If you wish to use the one without Growl please install the 'Spotify Controls No Growl.alfredextension' file. This will simply copy the growl notification to your clipboard, rather than display it.
 
 
 Download
 ----------------
-[Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/downloads)
-    
+[Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/archive/v2.zip)
+
 
 ## Version History ##
+
+### 2.0.0 - January 12, 2012
+
+- Extension ported to a workflow for version 2 of Alfred.
 
 ### 1.3.9 - August 2, 2012
 
@@ -136,7 +137,7 @@ Download
 - Added search capabilities ;)
 
 ### 1.1.0 - December 12, 2011###
- 
+
 - Removed need to return info by calling 'spot i OPT' you can now just use 'spot OPT'. The former will still work.
 - Added more aliases for controls
 - Added support for true previous track 'spot <<' will take you to the actual previous track and not just the beginning of the same song.
@@ -147,25 +148,25 @@ Download
 - If you call this extension with no command it will use 'playpause'
 
 ### 1.0.5 - December 9, 2011###
- 
+
 - Updated growl notifications to updated spec on growl.info. Should work with all versions of growl now.
 
 ### 1.0.4 - October 25, 2011###
- 
+
 - Added growl notification if you call an invalid argument. IE: 'spot i hey'
 
 ### 1.0.3 - October 20, 2011###
- 
+
 - Fixed issue if no album artwork exists, Growl will use the Spotify icon
 
 ### 1.0.2 - August 10, 2011###
- 
+
 - Added functionality to add any info returned from 'spot i OPT' automatically to the clipboard
 
 ### 1.0.1 - August 10, 2011###
- 
+
 - Added support for track information and growl
 
 ### 1.0.0 - August 9, 2011###
- 
+
 - Commit: Initial Release
