@@ -72,7 +72,7 @@ $ spot version
 
 ## How to use (Search)
 
-You can also search inline with results showing up in the results panel of Alfred. Simply type `spot search` followed by `artist` or `album` or `track` then your query. If the search cannot find any of the previous keywords, `track` will be assumed. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
+You can also search inline with results showing up in the results panel of Alfred. Simply type `spot search` followed by `artist` or `album` or `track` then your query. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
 
 ### Examples
 ```
