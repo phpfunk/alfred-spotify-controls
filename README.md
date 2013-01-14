@@ -93,7 +93,13 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 * Double click the action labeled `spot search`
 * Change `IMAGES="no"` to `IMAGES="yes"`
 * Save
-# Done
+* Done
+
+## Contributors
+
+* [Jeff Johns](https://github.com/phpfunk)
+* [Robin Enhorn](https://github.com/enhorn)
+* [Simon Støvring](https://github.com/simonbs)
 
 Download
 ----------------
