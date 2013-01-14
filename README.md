@@ -24,6 +24,7 @@ spot shuffle  ::  Toggle shuffle (only available in 0.8.0 or above)
 spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
 spot help     ::  Open this help file
 spot dev      ::  My info
+spot clear    ::  Clears any artwork cache from you HDD
 
 Commands that also send a notification
 spot now      ::  Current track name, artist, album and duration (can also use i or current)
@@ -40,6 +41,7 @@ spot url      ::  The spotify HTTP URL
 spot appurl   ::  The spotify application URL
 spot version  ::  The spotify application version
 spot dev      ::  My info
+spot clear    ::  Clears any artwork cache from you HDD
 
 Commands that also copy the result to the clipboard
 spot id       ::  The spotify ID
