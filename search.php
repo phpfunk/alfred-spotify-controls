@@ -1,52 +1,34 @@
 <?php
-function arrayToXML($a)
-{
-    if (! is_array($a)) {
-        return false;
-    }
+include_once 'incl/functions.php';
 
-    $items = new SimpleXMLElement("<items></items>");
+$query          = $argv[2];
+$show_images    = (isset($argv[1]) && trim(strtolower($argv[1])) == 'yes') ? true : false;
+$tmp            = explode(' ', $query);
+$type           = strtolower($tmp[0]);
+$thumbs_path    = 'artwork';
+$x              = 1;
 
-    foreach($a as $b) {
-        $c = $items->addChild('item');
-        $c_keys = array_keys($b);
-        foreach($c_keys as $key) {
-            if ($key == 'uid') {
-                $c->addAttribute('uid', $b[$key]);
-            }
-            elseif ($key == 'arg') {
-                $c->addAttribute('arg', $b[$key]);
-            }
-            else {
-                $c->addChild($key, $b[$key]);
-            }
-        }
-    }
-
-    return $items->asXML();
+if ($type != 'artist' && $type != 'album' && $type != 'track') {
+    $type = 'track';
+} else {
+    $query  = trim(str_replace($type, '', $query));
 }
 
-$query  = $argv[1];
-$tmp    = explode(' ', $query);
-$type   = $tmp[0];
-$query  = trim(str_replace($type, '', $query));
-$type   = strtolower($type);
 $key    = $type . 's';
 
-if (($type != 'artist' && $type != 'album' && $type != 'track') || strlen($query) < 3) {
+if (strlen($query) < 3) {
     exit(1);
 }
 
-$max        = 15;
-$json       = file_get_contents('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
+$max        = ($show_images === true) ? 5 : 15;
+$json       = fetch('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
 $results    = array();
 
 if (! empty($json)) {
     $json    = json_decode($json);
-    $x       = 1;
 
     foreach ($json->{$key} as $k => $obj) {
-        if ($x < $max) {
+        if ($x <= $max) {
             $name           = (isset($obj->name)) ? htmlentities($obj->name, ENT_QUOTES, 'UTF-8') : null;
             $album          = (isset($obj->album->name)) ? htmlentities($obj->album->name, ENT_QUOTES, 'UTF-8') : null;
             $artist_name    = (isset($obj->artists[0]->name)) ? htmlentities($obj->artists[0]->name, ENT_QUOTES, 'UTF-8') : null;
@@ -55,7 +37,7 @@ if (! empty($json)) {
                 $subtitle        = 'Artist';
                 $autocomplete    = $name;
             }
-            elseif ($type == 'artist') {
+            elseif ($type == 'album') {
                 $subtitle        = $artist_name;
                 $autocomplete    = $artist_name . ' ' . $name;
             }
@@ -64,15 +46,38 @@ if (! empty($json)) {
                 $autocomplete    = $artist_name . ' ' . $album;
             }
 
+            if ($show_images === true) {
+                $hrefs         = explode(':', $obj->href);
+                $track_id      = $hrefs[2];
+                $thumb_path    = $thumbs_path . '/' . $track_id . '.png';
+
+                if (! file_exists($thumb_path)) {
+                    $artwork = getTrackArtwork($type, $track_id);
+                    if (! empty($artwork)) {
+                        shell_exec('curl -s ' . $artwork . ' -o ' . $thumb_path);
+                    }
+                }
+
+                $icon = (! file_exists($thumb_path)) ? 'icon.png' : $thumb_path;
+            }
+            else {
+                $icon = 'icon.png';
+            }
+
             array_push($results, array(
                 'uid'             => $type,
                 'arg'             => $obj->href,
                 'title'           => $name,
                 'subtitle'        => $subtitle,
-                'icon'            => 'icon.png',
+                'icon'            => $icon,
                 'autocomplete'    => $autocomplete
             ));
+            $x += 1;
+        }
+        else {
+            break;
         }
     }
+
     print arrayToXML($results);
 }

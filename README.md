@@ -1,86 +1,99 @@
-Spotify Controls for Alfred
-============
+# Spotify Controls for Alfred
 
 An Alfred Workflow so you can control Spotify from [Alfred App](http://alfredapp.com/). You will need Alfred Version 2 and the Powerpack to use this.
 
-Installation
-----------------
+## Installation
 
 To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
-How to use (Basic Commands)
-----------------
 
-Once installed with Alfred you can run the following commands
+## How to use (Basic Commands)
 
+```
+spot start    ::  To open or activate the Spotify application (can also use open or init)
+spot quit     ::  To quit the application (can also use kill or exit)
+spot pause    ::  Pause the current track (can also use stop)
+spot play     ::  Play the current track
+spot >        ::  Go to the next track (can also use next)
+spot <        ::  Replay the current track (can also use prev)
+spot <<       ::  Go to the previous track
+spot mute     ::  Toggles mute from on/off (can also use unmute)
+spot vol 50   ::  Sets the volume to the number specified after 'spot vol'
+spot app      ::  Open spotify application (only available in 0.8.0 or above)
+spot shuffle  ::  Toggle shuffle (only available in 0.8.0 or above)
+spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
+spot help     ::  Open this help file
+spot dev      ::  My info
 
-    spot start    ::  To open or activate the Spotify application (can also use s or init)
-    spot quit     ::  To quit the application (can also use kill, end, exit, q or e)
-    spot pause    ::  Pause the current track (can also use stop or no command)
-    spot play     ::  Play the current track (can also use no command)
-    spot next     ::  Go to the next track (can also use n or >)
-    spot prev     ::  Go to the previous track (can also use pr, previous, <, or <<)
-    spot mute     ::  Toggles mute from on/off (can also use m)
-    spot vol 50   ::  Sets the volume to the number specified after 'spot vol'
-    spot app      ::  Open spotify application (only available in 0.8.0 or above)
-    spot shuffle  ::  Toggle shuffle (only available in 0.8.0 or above)
-    spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
-    spot help     ::  Open this help file
-    spot dev      ::  My info
+Commands that also send a notification
+spot now      ::  Current track name, artist, album and duration (can also use i or current)
+spot artist   ::  Artist and Album Artist if applicable
+spot album    ::  Album name
+spot disc     ::  Disc # if available
+spot time     ::  Track duration (can also use t or duration)
+spot plays    ::  Total plays for this track (can also use count)
+spot track    ::  The song name (can also use t or song or name)
+spot starred  ::  If the song is starred or not (can also use star or fav)
+spot rank     ::  The popularity of the song from 0 to 100 (can also use pop or popularity)
+spot id       ::  The spotify ID
+spot url      ::  The spotify HTTP URL
+spot appurl   ::  The spotify application URL
+spot version  ::  The spotify application version
+spot dev      ::  My info
 
-    Commands that also send a notification
-    spot now      ::  Current track name, artist, album and duration (can also use i or current)
-    spot artist   ::  Artist and Album Artist if applicable
-    spot album    ::  Album name
-    spot disc     ::  Disc # if available
-    spot time     ::  Track duration (can also use t or duration)
-    spot plays    ::  Total plays for this track (can also use count)
-    spot track    ::  The song name (can also use t or song or name)
-    spot starred  ::  If the song is starred or not (can also use star or fav)
-    spot rank     ::  The popularity of the song from 0 to 100 (can also use pop or popularity)
-    spot id       ::  The spotify ID
-    spot url      ::  The spotify HTTP URL
-    spot appurl   ::  The spotify application URL
-    spot version  ::  The spotify application version
-
-    Commands that also copy the result to the clipboard
-    spot id       ::  The spotify ID
-    spot url      ::  The spotify HTTP URL
-    spot appurl   ::  The spotify application URL
-    spot version  ::  The spotify application version
-
-
-
-Examples
-----------------
-    $ spot next
-    $ spot pause
-    $ spot now
-    $ spot vol 75
-    $ spot artist
-    $ spot rank
-    $ spot url
-    $ spot <<
-    $ spot <
-    $ spot app lastfm
-    $ spot shuffle
-    $ spot repeat
-    $ spot help
-    $ spot dev
-    $ spot version
+Commands that also copy the result to the clipboard
+spot id       ::  The spotify ID
+spot url      ::  The spotify HTTP URL
+spot appurl   ::  The spotify application URL
+spot version  ::  The spotify application version
+```
 
 
-How to use (Search)
-----------------
 
-You can also search inline with results showing up in the results panel of Alfred. Simply type `spot search` followed by `artist` or `album` or `track` then you query. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
+### Examples
+```
+$ spot next
+$ spot pause
+$ spot now
+$ spot vol 75
+$ spot artist
+$ spot rank
+$ spot url
+$ spot <<
+$ spot <
+$ spot app lastfm
+$ spot shuffle
+$ spot repeat
+$ spot help
+$ spot dev
+$ spot version
+```
 
-#### Example
+
+## How to use (Search)
+
+You can also search inline with results showing up in the results panel of Alfred. Simply type `spot search` followed by `artist` or `album` or `track` then your query. If the search cannot find any of the previous keywords, `track` will be assumed. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
+
+### Examples
 ```
 spot search artist De La Soul
 spot search album Stakes is High
 spot search track Sunshine
 ```
+
+## Searching with images enabled (Thanks to [Robin Enhorn](https://github.com/enhorn) for this addition)
+
+Instead of using the default Spotify logo for search results you can use the actual images found for your search. This feature does not ship enabled with this worfklow because Spotify does **NOT** include the image in their API response.
+
+Instead it calls out to the actual Spotify URL and scrapes the image from the page. Since this takes some time to get all the images, you have to enable this feature. Also by enabling this feature it will cut your possible results from 15 to 5 to save some time.
+
+### How To
+
+* Open the workflow in Alfred (open Alfred preferences, clicks on the Workflows icon and click the `Spotify` worklow)
+* Double click the action labeled `spot search`
+* Change `IMAGES="no"` to `IMAGES="yes"`
+* Save
+# Done
 
 Download
 ----------------
@@ -88,6 +101,10 @@ Download
 
 
 ## Version History ##
+
+### 2.1.5 - January 13, 2012
+
+- Many code optimizations, optimize layout of workflow, add the ability to return image icons in search results, added `artwork` folder to cache images in and put secondary PHP pages in the `incl` folder.
 
 ### 2.1.4 - January 13, 2012
 
