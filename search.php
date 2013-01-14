@@ -4,23 +4,18 @@ include_once 'incl/functions.php';
 $query          = $argv[2];
 $show_images    = (isset($argv[1]) && trim(strtolower($argv[1])) == 'yes') ? true : false;
 $tmp            = explode(' ', $query);
-$type           = strtolower($tmp[0]);
+$type           = $tmp[0];
+$query          = trim(str_replace($type, '', $query));
+$type           = strtolower($type);
 $thumbs_path    = 'artwork';
 $x              = 1;
+$key            = $type . 's';
+$max            = ($show_images === true) ? 5 : 15;
 
-if ($type != 'artist' && $type != 'album' && $type != 'track') {
-    $type = 'track';
-} else {
-    $query  = trim(str_replace($type, '', $query));
-}
-
-$key    = $type . 's';
-
-if (strlen($query) < 3) {
+if (($type != 'artist' && $type != 'album' && $type != 'track') || strlen($query) < 3) {
     exit(1);
 }
 
-$max        = ($show_images === true) ? 5 : 15;
 $json       = fetch('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
 $results    = array();
 

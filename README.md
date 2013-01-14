@@ -108,6 +108,12 @@ Download
 
 ## Version History ##
 
+### 2.1.6 - January 13, 2012
+
+* Removed option to assume track as search because it slows down the search. You must type `artist`, `album` or `track` before you query.
+* Added `spot clear` to clear any images cached in the `artwork` folder.
+
+
 ### 2.1.5 - January 13, 2012
 
 - Many code optimizations, optimize layout of workflow, add the ability to return image icons in search results, added `artwork` folder to cache images in and put secondary PHP pages in the `incl` folder.
