@@ -108,6 +108,10 @@ Download
 
 ## Version History ##
 
+### 2.1.7 - January 13, 2012
+
+* Updated readme, forgot it
+
 ### 2.1.6 - January 13, 2012
 
 * Removed option to assume track as search because it slows down the search. You must type `artist`, `album` or `track` before you query.
