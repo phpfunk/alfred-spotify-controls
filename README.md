@@ -110,7 +110,7 @@ Download
 
 ## Version History ##
 
-### 2.1.6 - January 21, 2013
+### 2.1.8 - January 21, 2013
 * Update bundle ID
 
 ### 2.1.7 - January 13, 2012
