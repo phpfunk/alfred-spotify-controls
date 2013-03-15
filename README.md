@@ -3,12 +3,6 @@ Spotify Controls for Alfred
 
 An AppleScript so you can control Spotify from [Alfred App](http://alfredapp.com/). You will need Alfred and the Powerpack to use this.
 
-[Version 2 is ready for Alfred Version 2](https://github.com/phpfunk/alfred-spotify-controls/tree/v2)
-----------------
-Please [go here](https://github.com/phpfunk/alfred-spotify-controls/tree/v2) to find this extension ported to a workflow for the beta release of Alfred version 2. It is complete with notitication center support. :)
-
-Once Alfred version 2 is out of beta I will update the `master` branch with version two and archive version 1.
-
 Installation
 ----------------
 
@@ -87,7 +81,7 @@ Two versions of the extension are available, one with Growl and one without. If 
 
 Download
 ----------------
-[Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/downloads)
+[Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/archive/v1.zip)
 
 
 ## Version History ##
