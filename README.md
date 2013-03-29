@@ -111,6 +111,8 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 
 
 ## Version History ##
+### 2.1.9 - March 29, 2013
+* Fixed repeat toggle, switch `repating` to `repeating` - DOH!
 
 ### 2.1.8 - January 21, 2013
 * Update bundle ID
