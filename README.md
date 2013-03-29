@@ -8,6 +8,14 @@ Installation
 
 To install Spotify Controls in Alfred double click on the extension file.
 
+Using with Notification Center
+----------------
+
+If you would like to use the version 1 of this extension with notification center please Tommi Pääkkö's fork which adds this functionality. I did not want to merge this in as I am getting away from version 1 of this extension.
+
+[https://github.com/Glenf/alfred-spotify-controls](https://github.com/Glenf/alfred-spotify-controls)
+
+
 How to use
 ----------------
 
