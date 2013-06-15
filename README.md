@@ -115,7 +115,7 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 * Updated workflow to simply search
 * You can still use `spot search artist {QUERY} or one of the simplified searches below
 * `spot artist de la soul`
-* `spot album stake is high`
+* `spot album stakes is high`
 * `spot track sunshine`
 * `spot search [artist|album|track] {QUERY}` will still work as well
 * `spot album`. `spot track` and `spot artist` will still work to notify you of current playing track's album, track or artist
