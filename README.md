@@ -113,7 +113,6 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 ## Version History ##
 ### 2.2.0 - June 15, 2013
 * Updated workflow to simply search
-* You can still use `spot search artist {QUERY} or one of the simplified searches below
 * `spot artist de la soul`
 * `spot album stakes is high`
 * `spot track sunshine`
