@@ -30,8 +30,8 @@ spot clear    ::  Clears any artwork cache from you HDD
 
 Commands that also send a notification
 spot now      ::  Current track name, artist, album and duration (can also use i or current)
-spot artist   ::  Artist and Album Artist if applicable
-spot album    ::  Album name
+spot artist   ::  Artist and Album Artist if applicable or search for an artist
+spot album    ::  Album name of current playing track or search by album
 spot disc     ::  Disc # if available
 spot time     ::  Track duration (can also use t or duration)
 spot plays    ::  Total plays for this track (can also use count)
@@ -80,9 +80,9 @@ You can also search inline with results showing up in the results panel of Alfre
 
 ### Examples
 ```
-spot search artist De La Soul
-spot search album Stakes is High
-spot search track Sunshine
+spot artist De La Soul
+spot album Stakes is High
+spot track Sunshine
 ```
 
 ## Searching with images enabled (Thanks to [Robin Enhorn](https://github.com/enhorn) for this addition)
@@ -111,6 +111,15 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 
 
 ## Version History ##
+### 2.2.0 - June 15, 2013
+* Updated workflow to simply search
+* You can still use `spot search artist {QUERY} or one of the simplified searches below
+* `spot artist de la soul`
+* `spot album stake is high`
+* `spot track sunshine`
+* `spot search [artist|album|track] {QUERY}` will still work as well
+* `spot album` and `spot artist` will still work to notify you of current playing track's album name or artist name
+
 ### 2.1.9 - March 29, 2013
 * Fixed repeat toggle, switch `repating` to `repeating` - DOH!
 
