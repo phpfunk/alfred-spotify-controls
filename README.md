@@ -118,7 +118,7 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 * `spot album stake is high`
 * `spot track sunshine`
 * `spot search [artist|album|track] {QUERY}` will still work as well
-* `spot album` and `spot artist` will still work to notify you of current playing track's album name or artist name
+* `spot album`. `spot track` and `spot artist` will still work to notify you of current playing track's album, track or artist
 
 ### 2.1.9 - March 29, 2013
 * Fixed repeat toggle, switch `repating` to `repeating` - DOH!
