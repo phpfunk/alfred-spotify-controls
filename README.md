@@ -8,6 +8,31 @@ If you are looking for the Spotify Extension for Alfred Version 1, you can find 
 
 To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
+## Hotkeys
+Version 2.2.1 introduced the use of Hotkeys to invoke certain actions. All hotkeys are customizable in the workflow.
+
+#### Hotkey for Search
+
+```
+Command + Enter
+```
+
+This hotkey will bring open a default search box where you can just type one of the following commands to search:
+
+```
+artist De La Soul
+album Stakes is High
+track Sunshine
+```
+
+#### Hotkey for Radio Stations
+
+```
+Option + Command + R
+```
+
+This hotkey will simply create a new Spotify radio station from the currently playing track.
+
 
 ## How to use (Basic Commands)
 
@@ -73,8 +98,15 @@ $ spot dev
 $ spot version
 ```
 
+## Searching using the Hotkey (default to Command + Return)
+Version 2.2.1 introduced the addition of Hotkey search. By default press `Command + Return` to invoke the Spotify search bar. The Hotkey can be customized in the workflow to anything you would like. can bFrom here you can just type on of the following commands:
+```
+artist De La Soul
+album Stakes is High
+track Sunshine
+```
 
-## How to use (Search)
+## How to use Search (Old Method prior to 2.2.1, will always work)
 
 You can also search inline with results showing up in the results panel of Alfred. Simply type `spot` followed by `artist` or `album` or `track` then your query. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
 
@@ -99,6 +131,10 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 * Save
 * Done
 
+
+### Creating a Radio Station from the current track
+Easy, just press the Hotkey command of `Option + Command + R` and the workflow will create a Spotify radio station from the current track playing. The Hotkey can be customized in the workflow to anything you would like.
+
 ## Contributors
 
 * [Jeff Johns](https://github.com/phpfunk)
@@ -111,6 +147,11 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 
 
 ## Version History ##
+
+### 2.2.1 - July 3, 2013
+* Added hotkey support for searching
+* Added hotkey support for creating custom radio stations
+
 ### 2.2.0 - June 15, 2013
 * Updated workflow to simply search
 * `spot artist de la soul`
