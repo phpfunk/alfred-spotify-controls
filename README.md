@@ -146,7 +146,7 @@ Easy, just press the Hotkey command of `Option + Command + R` and the workflow w
 [Spotify Controls](https://github.com/phpfunk/alfred-spotify-controls/archive/master.zip)
 
 
-## Version History ##
+## Version History
 
 ### 2.2.1 - July 3, 2013
 * Added hotkey support for searching
