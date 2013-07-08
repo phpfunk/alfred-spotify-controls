@@ -27,14 +27,14 @@ class Releases {
 
                     $title = 'Version ' . $release;
                     if ($current > $n) {
-                        $subtitle = 'Downgrade to version ' . $release . '. (Ctrl+Enter to view this release)';
+                        $subtitle = 'Downgrade to version ' . $release . '.';
                     }
                     elseif ($current < $n) {
-                        $subtitle = 'Upgrade to version ' . $release . '. (Ctrl+Enter to view this release)';
+                        $subtitle = 'Upgrade to version ' . $release . '.';
                     }
                     else {
                         $title    .= ' (Current Version)';
-                        $subtitle = 'This is the version you are currently running.';
+                        $subtitle = 'This is the version you are running.';
                     }
 
                     array_push($releases, array(

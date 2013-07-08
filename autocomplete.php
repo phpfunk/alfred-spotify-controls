@@ -1,22 +1,19 @@
 <?php
 include dirname(__FILE__) . '/autoload.php';
 include dirname(__FILE__) . '/shared/commands.php';
-
-$query    = (isset($argv[1])) ? trim(strtolower($argv[1])) : null;
-$tmp      = explode(' ', $query);
-$c        = $tmp[0];
-$len      = strlen($c);
+include dirname(__FILE__) . '/shared/query.php';
 
 $results = array();
-foreach ($commands as $key => $arr) {
-    if (empty($query) || substr($key, 0, $len) == $c) {
+foreach ($commands as $k => $arr) {
+    if (empty($query) || substr($k, 0, $len) == $key) {
+        $query = ($space === false) ? $k : $query;
         array_push($results, array(
-            'uid'             => $key,
+            'uid'             => $k,
             'arg'             => $query,
             'title'           => $arr['title'],
             'subtitle'        => $arr['subtitle'],
             'icon'            => 'icon.png',
-            'autocomplete'    => $key
+            'autocomplete'    => $k
         ));
     }
 }

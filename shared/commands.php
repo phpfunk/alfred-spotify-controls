@@ -138,7 +138,7 @@ $commands = array(
 );
 
 $clones = array(
-    'prev'     => '<',
+    'prev'     => '<<',
     'next'     => '>',
     'pause'    => 'play',
     'stop'     => 'play',
