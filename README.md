@@ -165,7 +165,7 @@ The auto-updater is baked just for this extension. It will ping Github and get t
 ## Version History
 
 ### 2.2.2 - July 7, 2013
-* Added support for automatic updates
+* Added support for automatic updates `spot update`
 * Updated Spotify icon
 * Updated codebase a bit
 * Added easy way to find new releases `spot new`
