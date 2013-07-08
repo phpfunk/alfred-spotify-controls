@@ -11,6 +11,11 @@ To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` o
 ## Using automatic updates
 The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
 
+### Get the 5 latest versions
+```
+spot update
+```
+
 ## Hotkeys
 Version 2.2.1 introduced the use of Hotkeys to invoke certain actions. All hotkeys are customizable in the workflow.
 
