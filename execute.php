@@ -1,11 +1,9 @@
 <?php
 include dirname(__FILE__) . '/autoload.php';
 include dirname(__FILE__) . '/shared/commands.php';
+include dirname(__FILE__) . '/shared/query.php';
 
 $app_dir = dirname(__FILE__) . '/applescripts/';
-$query   = (isset($argv[1])) ? trim(strtolower($argv[1])) : null;
-$tmp     = explode(' ', $query);
-$key     = $tmp[0];
 $query   = trim(str_replace($key, '', $query));
 
 if (array_key_exists($key, $commands)) {
