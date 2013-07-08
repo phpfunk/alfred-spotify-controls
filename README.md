@@ -164,6 +164,17 @@ The auto-updater is baked just for this extension. It will ping Github and get t
 
 ## Version History
 
+### 2.2.3 - July 8, 2013
+* Cleaned up codebase and workflow like whoa
+* Removed my keyword actions from workflow
+* Added autocomplete file to populate commands
+* Added better support for clone actions (IE: >, next = same thing)
+* Removed `applescript.txt` file, can see in the code now
+* Executing OSA and Bash from command line now for consolidation purposes
+* Added new `commands.php` file to keep track of commands and what to execute
+* Update release to 2.2.3 for auto-updater
+* Added various applescripts for commands requiring some logic
+
 ### 2.2.2 - July 7, 2013
 * Added support for automatic updates `spot update`
 * Updated Spotify icon
