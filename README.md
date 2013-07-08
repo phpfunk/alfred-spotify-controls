@@ -9,7 +9,7 @@ If you are looking for the Spotify Extension for Alfred Version 1, you can find 
 To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
 ## Using automatic updates
-The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
+The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
 
 ### Get the 5 latest versions
 ```
