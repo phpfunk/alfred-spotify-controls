@@ -61,6 +61,7 @@ spot help     ::  Open this help file
 spot dev      ::  My info
 spot clear    ::  Clears any artwork cache from you HDD
 spot update   ::  Gets the last 5 releases of the extension, enter to install, ctrl+enter to view release
+spot new      ::  Visit the new releases search results
 
 Commands that also send a notification
 spot now      ::  Current track name, artist, album and duration (can also use i or current)
@@ -106,6 +107,7 @@ $ spot help
 $ spot dev
 $ spot version
 $ spot update
+$ spot new
 ```
 
 ## Searching using the Hotkey (default to Command + Return)
@@ -166,6 +168,7 @@ The auto-updater is baked just for this extension. It will ping Github and get t
 * Added support for automatic updates
 * Updated Spotify icon
 * Updated codebase a bit
+* Added easy way to find new releases `spot new`
 
 ### 2.2.1 - July 3, 2013
 * Added hotkey support for searching
