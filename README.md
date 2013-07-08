@@ -175,6 +175,7 @@ The auto-updater is baked just for this extension. It will ping Github and get t
 * Update release to 2.2.3 for auto-updater
 * Added various applescripts for commands requiring some logic
 * Removed the shorcuts for `spot artist {SEARCH}`, `spot album {SEARCH}` and `spot track {SEARCH}` to avoid conflicts, now required to use the hotkey shortcut or type `spot search artist|album|track {SEARCH}`. Hotkey is recommended :)
+* Added the ability to hit `Control + Enter` on a search result to start a radio station from that result
 
 ### 2.2.2 - July 7, 2013
 * Added support for automatic updates `spot update`
