@@ -2,5 +2,5 @@
 
 function __autoload($class)
 {
-    require 'libs/' . $class . '.php';
+    require dirname(__FILE__) . '/libs/' . $class . '.php';
 }

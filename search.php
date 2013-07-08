@@ -1,6 +1,5 @@
 <?php
-include_once 'incl/functions.php';
-
+include dirname(__FILE__) . '/autoload.php';
 $query          = $argv[2];
 $show_images    = (isset($argv[1]) && trim(strtolower($argv[1])) == 'yes') ? true : false;
 $tmp            = explode(' ', $query);
@@ -16,7 +15,7 @@ if (($type != 'artist' && $type != 'album' && $type != 'track') || strlen($query
     exit(1);
 }
 
-$json       = fetch('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
+$json       = Tools::fetch('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
 $results    = array();
 
 if (! empty($json)) {
@@ -47,7 +46,7 @@ if (! empty($json)) {
                 $thumb_path    = $thumbs_path . '/' . $track_id . '.png';
 
                 if (! file_exists($thumb_path)) {
-                    $artwork = getTrackArtwork($type, $track_id);
+                    $artwork = Tools::getTrackArtwork($type, $track_id);
                     if (! empty($artwork)) {
                         shell_exec('curl -s ' . $artwork . ' -o ' . $thumb_path);
                     }
@@ -74,5 +73,5 @@ if (! empty($json)) {
         }
     }
 
-    print arrayToXML($results);
+    print Tools::arrayToXML($results);
 }

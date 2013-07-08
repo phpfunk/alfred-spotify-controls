@@ -23,14 +23,14 @@ class Releases {
             $current  = str_replace('.', '', $release);
 
             foreach ($arr as $n => $release) {
-                if ($x < $max_releases) {
+                if ($x <= $max_releases) {
 
                     $title = 'Version ' . $release;
                     if ($current > $n) {
-                        $subtitle = 'Downgrade to version ' . $release . '. (Ctrl+Enter to view release)';
+                        $subtitle = 'Downgrade to version ' . $release . '. (Ctrl+Enter to view this release)';
                     }
                     elseif ($current < $n) {
-                        $subtitle = 'Upgrade to version ' . $release . '. (Ctrl+Enter to view release)';
+                        $subtitle = 'Upgrade to version ' . $release . '. (Ctrl+Enter to view this release)';
                     }
                     else {
                         $title    .= ' (Current Version)';
@@ -38,6 +38,7 @@ class Releases {
                     }
 
                     array_push($releases, array(
+                        'uid'             => $release,
                         'arg'             => $release,
                         'title'           => $title,
                         'subtitle'        => $subtitle,
@@ -54,6 +55,7 @@ class Releases {
         else {
             $release = array();
             array_push($releases, array(
+                'uid'             => 'error',
                 'arg'             => 'error',
                 'title'           => 'Error',
                 'subtitle'        => 'There was an error extracting the releases from Github.',
@@ -63,7 +65,31 @@ class Releases {
         }
 
         if (! empty($releases)) {
-                print Tools::arrayToXML($releases);
-            }
+            print Tools::arrayToXML($releases);
+        }
+    }
+
+    public static function update($release)
+    {
+        $user_folder = explode('/', dirname(__FILE__));
+        $user_folder = '/' . $user_folder[1] . '/' . $user_folder[2];
+        $dl_locale   = $user_folder . '/Downloads/Spotify.alfredworkflow';
+        $workflow    = 'https://github.com/phpfunk/alfred-spotify-controls/raw/' . $release . '/Spotify.alfredworkflow';
+        $file        = fopen($dl_locale, 'w');
+        $ch          = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $workflow);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FILE, $file);
+        curl_exec($ch);
+        curl_close($ch);
+        fclose($file);
+
+        if (! file_exists($dl_locale)) {
+            print 'Sorry, could NOT download the update :(';
+        }
+        else {
+            shell_exec('open "' . $dl_locale . '"');
+        }
     }
 }

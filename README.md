@@ -8,6 +8,9 @@ If you are looking for the Spotify Extension for Alfred Version 1, you can find 
 
 To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
+## Using automatic updates
+The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
+
 ## Hotkeys
 Version 2.2.1 introduced the use of Hotkeys to invoke certain actions. All hotkeys are customizable in the workflow.
 
@@ -52,6 +55,7 @@ spot repeat   ::  Toggle repeat (only available in 0.8.0 or above)
 spot help     ::  Open this help file
 spot dev      ::  My info
 spot clear    ::  Clears any artwork cache from you HDD
+spot update   ::  Gets the last 5 releases of the extension, enter to install, ctrl+enter to view release
 
 Commands that also send a notification
 spot now      ::  Current track name, artist, album and duration (can also use i or current)
@@ -96,6 +100,7 @@ $ spot repeat
 $ spot help
 $ spot dev
 $ spot version
+$ spot update
 ```
 
 ## Searching using the Hotkey (default to Command + Return)
@@ -135,6 +140,10 @@ Instead it calls out to the actual Spotify URL and scrapes the image from the pa
 ### Creating a Radio Station from the current track
 Easy, just press the Hotkey command of `Option + Command + R` and the workflow will create a Spotify radio station from the current track playing. The Hotkey can be customized in the workflow to anything you would like.
 
+
+### Using automatic updates
+The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
+
 ## Contributors
 
 * [Jeff Johns](https://github.com/phpfunk)
@@ -147,6 +156,11 @@ Easy, just press the Hotkey command of `Option + Command + R` and the workflow w
 
 
 ## Version History
+
+### 2.2.2 - July 7, 2013
+* Added support for automatic updates
+* Updated Spotify icon
+* Updated codebase a bit
 
 ### 2.2.1 - July 3, 2013
 * Added hotkey support for searching
