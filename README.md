@@ -9,11 +9,15 @@ If you are looking for the Spotify Extension for Alfred Version 1, you can find 
 To install Spotify Controls in Alfred double click on `Spotify.alfredworkflow` or drag the workflow to the workflow window in Alfred.
 
 ## Using automatic updates
-The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
+The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. You can also use `Option + Enter` to read the release notes for the release. Yep that's it. No more downloading squat from here.
 
-### Get the 5 latest versions
+### Get the 5 latest releases
 ```
 spot update
+
+Enter           = Install release
+Control + Enter = View codebase of release
+Option + Enter  = Read the release notes for the release
 ```
 
 ## Hotkeys
@@ -118,15 +122,17 @@ album Stakes is High
 track Sunshine
 ```
 
+You can `Control + Enter` on any result and start a radio station from that result. A normal `Enter` will just go to that result within Spotify.
+
 ## How to use Search (Old Method prior to 2.2.1, will always work)
 
 You can also search inline with results showing up in the results panel of Alfred. Simply type `spot` followed by `artist` or `album` or `track` then your query. The results will start to appear in the file list within Alfred. After that, find the result you want and either press `Return` on your keyboard or click the result. Spotify will open and go directly to that result.
 
 ### Examples
 ```
-spot artist De La Soul
-spot album Stakes is High
-spot track Sunshine
+spot search artist De La Soul
+spot search album Stakes is High
+spot search track Sunshine
 ```
 
 ## Searching with images enabled (Thanks to [Robin Enhorn](https://github.com/enhorn) for this addition)
@@ -149,7 +155,7 @@ Easy, just press the Hotkey command of `Option + Command + R` and the workflow w
 
 
 ### Using automatic updates
-The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. Yep that's it. No more downloading squat from here.
+The auto-updater is baked just for this extension. It will ping Github and get the last 5 releases of this extension. You can easily press `Enter` to install a new version, or downgrade to an older version. If you would like to view the release first, simply `Control + Enter` to be taken directly to the release page on Github. You can also use `Option + Enter` to read the release notes for the release. Yep that's it. No more downloading squat from here.
 
 ## Contributors
 
@@ -176,6 +182,7 @@ The auto-updater is baked just for this extension. It will ping Github and get t
 * Added various applescripts for commands requiring some logic
 * Removed the shorcuts for `spot artist {SEARCH}`, `spot album {SEARCH}` and `spot track {SEARCH}` to avoid conflicts, now required to use the hotkey shortcut or type `spot search artist|album|track {SEARCH}`. Hotkey is recommended :)
 * Added the ability to hit `Control + Enter` on a search result to start a radio station from that result
+* Added the ability to read about a specific release by using `Option + Enter` on an auto-update search result
 
 ### 2.2.2 - July 7, 2013
 * Added support for automatic updates `spot update`
