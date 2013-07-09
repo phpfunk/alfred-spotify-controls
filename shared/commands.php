@@ -134,6 +134,16 @@ $commands = array(
         'title'    => 'Get Help',
         'subtitle' => 'Read the help file for this workflow',
         'bash'     => 'open "https://github.com/phpfunk/alfred-spotify-controls/wiki"'
+    ),
+    'bug' => array(
+        'title'    => 'Submit a Bug',
+        'subtitle' => 'Submit a bug report about this workflow',
+        'bash'     => 'open "https://github.com/phpfunk/alfred-spotify-controls/issues/new"'
+    ),
+    'feature' => array(
+        'title'    => 'Submit a Feature Request',
+        'subtitle' => 'Submit a feature request for this workflow',
+        'bash'     => 'open "https://github.com/phpfunk/alfred-spotify-controls/issues/new"'
     )
 );
 
