@@ -133,7 +133,7 @@ $commands = array(
     'help' => array(
         'title'    => 'Get Help',
         'subtitle' => 'Read the help file for this workflow',
-        'bash'     => 'open "https://github.com/phpfunk/alfred-spotify-controls/blob/master/README.md"'
+        'bash'     => 'open "https://github.com/phpfunk/alfred-spotify-controls/wiki"'
     )
 );
 
