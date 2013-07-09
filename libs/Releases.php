@@ -39,7 +39,6 @@ class Releases {
                     }
 
                     array_push($releases, array(
-                        'uid'             => $release,
                         'arg'             => $release,
                         'title'           => $title,
                         'subtitle'        => $subtitle,
@@ -56,7 +55,6 @@ class Releases {
         else {
             $release = array();
             array_push($releases, array(
-                'uid'             => 'error',
                 'arg'             => 'error',
                 'title'           => 'Error',
                 'subtitle'        => 'There was an error extracting the releases from Github.',
