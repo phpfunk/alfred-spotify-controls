@@ -1,9 +1,10 @@
 <?php
-include dirname(__FILE__) . '/autoload.php';
-include dirname(__FILE__) . '/shared/commands.php';
-include dirname(__FILE__) . '/shared/query.php';
+$dirname = dirname(__FILE__);
+include $dirname . '/autoload.php';
+include $dirname . '/shared/commands.php';
+include $dirname . '/shared/query.php';
 
-$app_dir = dirname(__FILE__) . '/applescripts/';
+$app_dir = $dirname . '/applescripts/';
 $query   = trim(str_replace($key, '', $query));
 
 if (array_key_exists($key, $commands)) {
