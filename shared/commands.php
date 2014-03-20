@@ -27,7 +27,7 @@ $commands = array(
     ),
     'open' => array(
         'title'    => 'Open',
-        'subtitle' => 'Quit Spotify',
+        'subtitle' => 'Open Spotify',
         'command'  => 'activate'
     ),
     'mute' => array(
