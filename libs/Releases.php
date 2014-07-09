@@ -16,7 +16,7 @@ class Releases {
                     $arr[$version] = $obj->name;
                 }
             }
-            
+
             krsort($arr);
 
             $releases = array();
