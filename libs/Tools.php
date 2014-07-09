@@ -45,7 +45,7 @@ class Tools {
 
     public static function getTrackArtwork($type, $id)
     {
-         $html = fetch('http://open.spotify.com/' . $type . '/' . $id);
+         $html = self::fetch('http://open.spotify.com/' . $type . '/' . $id);
          if (! empty($html)) {
              preg_match_all('/.*?og:image.*?content="(.*?)">.*?/is', $html, $m);
              return (isset($m[1][0])) ? $m[1][0] : '';
