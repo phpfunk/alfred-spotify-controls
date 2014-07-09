@@ -12,15 +12,36 @@ $key            = $type . 's';
 $max            = ($show_images === true) ? 5 : 15;
 
 if (($type != 'artist' && $type != 'album' && $type != 'track') || strlen($query) < 3) {
-    exit(1);
+    exit;
 }
 
-$json       = Tools::fetch('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
-$results    = array();
+$results = array();
+$json    = Tools::fetch('http://ws.spotify.com/search/1/' . $type . '.json?q=' . urlencode($query));
+$error   = (empty($json)) ? true : false;
+$json    = json_decode($json);
+$error   = (Tools::getJsonError() !== false) ? true : $error;
 
-if (! empty($json)) {
-    $json    = json_decode($json);
-
+if ($error === true) {
+    array_push($results, array(
+        'uid'          => $type,
+        'arg'          => null,
+        'title'        => 'Error Found',
+        'subtitle'     => 'Could not find or parse results',
+        'icon'         => 'icon.png',
+        'autocomplete' => htmlentities($query, ENT_QUOTES, 'UTF-8')
+    ));
+}
+elseif ($json->info->num_results < 1 || !isset($json->info->num_results) || !isset($json->{$key})) {
+    array_push($results, array(
+        'uid'          => $type,
+        'arg'          => null,
+        'title'        => 'Came up empty',
+        'subtitle'     => 'No results found for ' . htmlentities($query, ENT_QUOTES, 'UTF-8'),
+        'icon'         => 'icon.png',
+        'autocomplete' => htmlentities($query, ENT_QUOTES, 'UTF-8')
+    ));
+}
+else {
     foreach ($json->{$key} as $k => $obj) {
         if ($x <= $max) {
             $name           = (isset($obj->name)) ? htmlentities($obj->name, ENT_QUOTES, 'UTF-8') : null;
@@ -72,6 +93,6 @@ if (! empty($json)) {
             break;
         }
     }
-
-    print Tools::arrayToXML($results);
 }
+
+print Tools::arrayToXML($results);
